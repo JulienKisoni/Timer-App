@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class TimerForm extends Component {
   state = {
     title: this.props.title || "",
-    project: this.props.title || ""
+    project: this.props.project || ""
   };
   handleTitleChange = e => {
     this.setState({ title: e.target.value });
@@ -11,8 +11,15 @@ class TimerForm extends Component {
   handleProjectChange = e => {
     this.setState({ project: e.target.value });
   };
+  handleSubmit = () => {
+    this.props.onFormSubmit({
+      id: this.props.id,
+      title: this.state.title,
+      project: this.state.project
+    });
+  };
   render() {
-    const submitText = this.props.title ? "Modifier" : "Créer";
+    const submitText = this.props.id ? "Modifier" : "Créer";
     return (
       <div className="form">
         <div className="form--content">
@@ -21,7 +28,7 @@ class TimerForm extends Component {
             <input
               type="text"
               placeholder="Mon Titre"
-              value={this.props.title}
+              value={this.state.title}
               onChange={this.handleTitleChange}
             />
           </div>
@@ -30,14 +37,21 @@ class TimerForm extends Component {
             <input
               type="text"
               placeholder="Mon Projet"
-              value={this.props.project}
+              value={this.state.project}
               onChange={this.handleProjectChange}
             />
           </div>
         </div>
         <div className="form--button">
-          <button className="button btn--submit">{submitText}</button>
-          <button className="button btn--cancel">Annuler</button>
+          <button className="button btn--submit" onClick={this.handleSubmit}>
+            {submitText}
+          </button>
+          <button
+            className="button btn--cancel"
+            onClick={this.props.onFormClose}
+          >
+            Annuler
+          </button>
         </div>
       </div>
     );
