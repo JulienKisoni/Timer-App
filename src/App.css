@@ -12,6 +12,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   color: #0e2430;
   font-size: 1.4rem;
+  background-color: #dddddd;
 }
 h2,
 p {
@@ -25,10 +26,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #dddddd;
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
+  padding: 5rem 0;
 }
 
 .boxed--view {
@@ -216,4 +214,14 @@ span {
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+.red {
+  background: #fc3a51;
+  transition: color 0.3s ease-in, background 0.3s ease-in;
+}
+.red:hover,
+.red:active {
+  color: #fc3a51;
+  background: white;
+  border-color: #fc3a51;
 }

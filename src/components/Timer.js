@@ -23,7 +23,7 @@ class Timer extends Component {
   renderButton = () => {
     if (this.props.runningSince) {
       return (
-        <button className="button" onClick={this.onPauseClick}>
+        <button className="button red" onClick={this.onPauseClick}>
           Pause
         </button>
       );
